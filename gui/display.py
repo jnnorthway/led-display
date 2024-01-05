@@ -1,4 +1,5 @@
 import tkinter as tk
+import time
 
 PIXEL_SIZE = 20
 WIDTH = PIXEL_SIZE * 32
@@ -113,7 +114,7 @@ def get_number_array(number):
                 [DC,WC,WC,DC,DC],
                 [WC,DC,DC,WC,DC],
                 [WC,DC,DC,WC,DC],
-                [DC,DC,DC,DC,DC],
+                [WC,DC,DC,WC,DC],
                 [WC,DC,DC,WC,DC],
                 [WC,DC,DC,WC,DC],
                 [DC,WC,WC,DC,DC],
@@ -121,65 +122,65 @@ def get_number_array(number):
         elif number == "1":
             number_list.append([
                 [DC,DC,DC,DC,DC],
-                [DC,DC,DC,DC,DC],
-                [DC,DC,DC,WC,DC],
-                [DC,DC,DC,WC,DC],
-                [DC,DC,DC,DC,DC],
-                [DC,DC,DC,WC,DC],
-                [DC,DC,DC,WC,DC],
-                [DC,DC,DC,DC,DC],
+                [DC,DC,WC,DC,DC],
+                [DC,DC,WC,DC,DC],
+                [DC,DC,WC,DC,DC],
+                [DC,DC,WC,DC,DC],
+                [DC,DC,WC,DC,DC],
+                [DC,DC,WC,DC,DC],
+                [DC,DC,WC,DC,DC],
             ])
         elif number == "2":
             number_list.append([
                 [DC,DC,DC,DC,DC],
                 [DC,WC,WC,DC,DC],
+                [WC,DC,DC,WC,DC],
                 [DC,DC,DC,WC,DC],
-                [DC,DC,DC,WC,DC],
-                [DC,WC,WC,DC,DC],
+                [DC,DC,WC,DC,DC],
+                [DC,WC,DC,DC,DC],
                 [WC,DC,DC,DC,DC],
-                [WC,DC,DC,DC,DC],
-                [DC,WC,WC,DC,DC],
+                [WC,WC,WC,WC,DC],
             ])
         elif number == "3":
             number_list.append([
                 [DC,DC,DC,DC,DC],
                 [DC,WC,WC,DC,DC],
-                [DC,DC,DC,WC,DC],
+                [WC,DC,DC,WC,DC],
                 [DC,DC,DC,WC,DC],
                 [DC,WC,WC,DC,DC],
                 [DC,DC,DC,WC,DC],
-                [DC,DC,DC,WC,DC],
+                [WC,DC,DC,WC,DC],
                 [DC,WC,WC,DC,DC],
             ])
         elif number == "4":
             number_list.append([
                 [DC,DC,DC,DC,DC],
-                [DC,DC,DC,DC,DC],
                 [WC,DC,DC,WC,DC],
                 [WC,DC,DC,WC,DC],
-                [DC,WC,WC,DC,DC],
+                [WC,DC,DC,WC,DC],
+                [DC,WC,WC,WC,DC],
                 [DC,DC,DC,WC,DC],
                 [DC,DC,DC,WC,DC],
-                [DC,DC,DC,DC,DC],
+                [DC,DC,DC,WC,DC],
             ])
         elif number == "5":
             number_list.append([
                 [DC,DC,DC,DC,DC],
-                [DC,WC,WC,DC,DC],
+                [WC,WC,WC,WC,DC],
                 [WC,DC,DC,DC,DC],
                 [WC,DC,DC,DC,DC],
-                [DC,WC,WC,DC,DC],
+                [WC,WC,WC,DC,DC],
                 [DC,DC,DC,WC,DC],
-                [DC,DC,DC,WC,DC],
+                [WC,DC,DC,WC,DC],
                 [DC,WC,WC,DC,DC],
             ])
         elif number == "6":
             number_list.append([
                 [DC,DC,DC,DC,DC],
                 [DC,WC,WC,DC,DC],
+                [WC,DC,DC,WC,DC],
                 [WC,DC,DC,DC,DC],
-                [WC,DC,DC,DC,DC],
-                [DC,WC,WC,DC,DC],
+                [WC,WC,WC,DC,DC],
                 [WC,DC,DC,WC,DC],
                 [WC,DC,DC,WC,DC],
                 [DC,WC,WC,DC,DC],
@@ -187,13 +188,13 @@ def get_number_array(number):
         elif number == "7":
             number_list.append([
                 [DC,DC,DC,DC,DC],
-                [DC,WC,WC,DC,DC],
+                [WC,WC,WC,DC,DC],
                 [DC,DC,DC,WC,DC],
                 [DC,DC,DC,WC,DC],
-                [DC,DC,DC,DC,DC],
-                [DC,DC,DC,WC,DC],
-                [DC,DC,DC,WC,DC],
-                [DC,DC,DC,DC,DC],
+                [DC,DC,WC,DC,DC],
+                [DC,DC,WC,DC,DC],
+                [DC,WC,DC,DC,DC],
+                [DC,WC,DC,DC,DC],
             ])
         elif number == "8":
             number_list.append([
@@ -212,10 +213,10 @@ def get_number_array(number):
                 [DC,WC,WC,DC,DC],
                 [WC,DC,DC,WC,DC],
                 [WC,DC,DC,WC,DC],
-                [DC,WC,WC,DC,DC],
+                [DC,WC,WC,WC,DC],
                 [DC,DC,DC,WC,DC],
                 [DC,DC,DC,WC,DC],
-                [DC,DC,DC,DC,DC],
+                [DC,DC,DC,WC,DC],
             ])
     number_list.append([
         [DC,DC,DC,DC,DC,DC,DC,DC,DC,DC,DC,DC,DC,DC,DC,DC,],
@@ -242,27 +243,28 @@ youtube = [
 
 subs = 767
 
-num_array = get_number_array(subs)
-current_number = 0
-current_pixel = 0
+def pack_subs(subscribers):
+    num_array = get_number_array(subscribers)
+    current_number = 0
+    current_pixel = 0
+    for i in range(0, WIDTH, PIXEL_SIZE):
+        x = int(i/PIXEL_SIZE)
+        for j in range(0, HEIGHT, PIXEL_SIZE):
+            y = int(j/PIXEL_SIZE)
+            if x < 11:
+                colour = youtube[y][x]
+            else:
+                colour = num_array[current_number][y][current_pixel]
+            canvas.create_rectangle(i, j, i + PIXEL_SIZE, j + PIXEL_SIZE, outline="black", fill=colour, width=2)
+        if x >= 11:
+            current_pixel += 1
+            if current_pixel == len(num_array[current_number][y]):
+                current_number += 1
+                current_pixel = 0
+    canvas.pack()
 
+for i in range(10000000):
+    pack_subs(i)
+    window.update()
+    time.sleep(0.8)
 
-for i in range(0, WIDTH, PIXEL_SIZE):
-    x = int(i/PIXEL_SIZE)
-    for j in range(0, HEIGHT, PIXEL_SIZE):
-        y = int(j/PIXEL_SIZE)
-        if x < 11:
-            colour = youtube[y][x]
-        else:
-            colour = num_array[current_number][y][current_pixel]
-        canvas.create_rectangle(i, j, i + PIXEL_SIZE, j + PIXEL_SIZE, outline="black", fill=colour, width=2)
-    if x >= 11:
-        current_pixel += 1
-        if current_pixel == len(num_array[current_number][y]):
-            print(current_pixel)
-            current_number += 1
-            current_pixel = 0
-
-
-canvas.pack()
-window.mainloop()
