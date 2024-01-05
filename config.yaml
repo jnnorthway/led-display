@@ -1,0 +1,17 @@
+# Config.yaml
+# Setup parameters for led-display
+---
+youtube:
+    channel_id: ''
+    api_key: ''
+led:
+    pin: 18
+    count: 256
+    brightness: 100
+    frequency: 800000
+    inverted: false
+    channel: 0
+    dma: 10
+button:
+    primary: 17
+    secondary: 27

@@ -1,0 +1,11 @@
+[Unit]
+Description=LED display runner
+
+[Service]
+Type=simple
+EnvironmentFile={REPLACE_ME}
+ExecStartPre=/bin/bash $DISPLAY_HOME/update.sh
+ExecStart=/bin/bash -c "cd $DISPLAY_HOME && /usr/bin/python3 -u run.py"
+
+[Install]
+WantedBy=multi-user.target
