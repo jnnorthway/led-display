@@ -56,6 +56,6 @@ def wipe(color, brightness=None):
     if not brightness:
         brightness = CONFIG["led"]["brightness"]
     for i in range(WIDTH * HEIGHT):
-        STRIP.setPixelColor(i, color)
+        STRIP.setPixelColor(i, COLOR_TRANSLATION[color])
     STRIP.setBrightness(brightness)
     STRIP.show()
