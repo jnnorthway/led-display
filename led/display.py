@@ -34,15 +34,15 @@ def pack_subs(logo, number_array):
             if x < logo_width:
                 colour = COLOR_TRANSLATION[logo[y][x]]
             else:
-                colour = COLOR_TRANSLATION[
+                colour = number_array[current_number][y][current_pixel][
                     number_array[current_number][y][current_pixel]
                 ]
-            z = x * j
+            z = x * HEIGHT + y
             col = math.floor(z / HEIGHT)
             if col % 2 == 0:
-                px = z % HEIGHT
+                px = x * HEIGHT + (z % HEIGHT)
             else:
-                px = HEIGHT - ((z + 1) % HEIGHT)
+                px = x * HEIGHT + HEIGHT - ((z + 1) % HEIGHT)
             STRIP.setPixelColor(px, colour)
         if x >= logo_width:
             current_pixel += 1

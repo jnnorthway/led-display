@@ -36,6 +36,7 @@ if __name__ == "__main__":
             config["youtube"]["api_key"],
         )
         if old_subs != sub_count:
+            print(f"New sub count: {sub_count}")
             old_subs = sub_count
             num_array = number_array.get_number_array(sub_count, WC, DC, MAX_DIGITS)
             display.pack_subs(LOGO, num_array)
