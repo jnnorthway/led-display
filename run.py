@@ -29,13 +29,15 @@ LOGO = [
 
 if __name__ == "__main__":
     config = common.load_config()
+    channel_id = os.environ.get("CHANNEL_ID")
+    api_key = os.environ.get("API_KEY")
     old_subs = 0
     while True:
         try:
             sub_count = int(
                 youtube.get_sub_count(
-                    config["youtube"]["channel_id"],
-                    config["youtube"]["api_key"],
+                    channel_id,
+                    api_key,
                 )
             )
             if old_subs != sub_count:

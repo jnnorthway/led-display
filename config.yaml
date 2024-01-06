@@ -1,9 +1,6 @@
 # Config.yaml
 # Setup parameters for led-display
 ---
-youtube:
-    channel_id: ''
-    api_key: ''
 led:
     pin: 18
     count: 256

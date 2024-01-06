@@ -34,6 +34,26 @@ if [ -f /usr/lib/python3.*/EXTERNALLY-MANAGED ]; then
 fi
 
 while true; do
+read -p "YouTube channel id? " rsp
+    if [[ -z $rsp ]]; then
+        echo invalid response
+    else
+        echo CHANNEL_ID="$rsp" >> $REPO_DIR/.env
+        break
+    fi
+done
+
+while true; do
+read -p "YouTube api key? " rsp
+    if [[ -z $rsp ]]; then
+        echo invalid response
+    else
+        echo API_KEY="$rsp" >> $REPO_DIR/.env
+        break
+    fi
+done
+
+while true; do
     read -p "Update on startup? (y/n) " rsp
     case $rsp in
         [yY] )
