@@ -8,6 +8,7 @@ Type=simple
 EnvironmentFile={REPLACE_ME}
 ExecStartPre=su vagrant /bin/bash -c "cd $DISPLAY_HOME && ./update.sh"
 ExecStart=/bin/bash -c "cd $DISPLAY_HOME && /usr/bin/python3 -u run.py"
+KillSignal=SIGINT
 
 [Install]
 WantedBy=multi-user.target
