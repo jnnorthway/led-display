@@ -6,7 +6,7 @@ After=network-online.target
 [Service]
 Type=simple
 EnvironmentFile={REPLACE_ME}
-ExecStartPre=/bin/bash $DISPLAY_HOME/update.sh
+ExecStartPre=su vagrant /bin/bash -c "cd $DISPLAY_HOME && ./update.sh"
 ExecStart=/bin/bash -c "cd $DISPLAY_HOME && /usr/bin/python3 -u run.py"
 
 [Install]
