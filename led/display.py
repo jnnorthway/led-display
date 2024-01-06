@@ -1,3 +1,4 @@
+import math
 import common
 from rpi_ws281x import Adafruit_NeoPixel, Color
 
@@ -36,7 +37,13 @@ def pack_subs(logo, number_array):
                 colour = COLOR_TRANSLATION[
                     number_array[current_number][y][current_pixel]
                 ]
-            STRIP.setPixelColor(x * j, colour)
+            z = x * j
+            col = math.floor(z / HEIGHT)
+            if col % 2 == 0:
+                px = z % HEIGHT
+            else:
+                px = HEIGHT - ((z + 1) % HEIGHT)
+            STRIP.setPixelColor(px, colour)
         if x >= logo_width:
             current_pixel += 1
             if current_pixel == len(number_array[current_number][y]):
