@@ -32,9 +32,9 @@ def pack_subs(logo, number_array):
         for j in range(0, HEIGHT):
             y = int(j)
             if x < logo_width:
-                colour = COLOR_TRANSLATION[logo[y][x]]
+                color = COLOR_TRANSLATION[logo[y][x]]
             else:
-                colour = COLOR_TRANSLATION[
+                color = COLOR_TRANSLATION[
                     number_array[current_number][y][current_pixel]
                 ]
             z = x * HEIGHT + y
@@ -43,10 +43,19 @@ def pack_subs(logo, number_array):
                 px = x * HEIGHT + (z % HEIGHT)
             else:
                 px = x * HEIGHT + HEIGHT - ((z % HEIGHT) + 1)
-            STRIP.setPixelColor(px, colour)
+            STRIP.setPixelColor(px, color)
         if x >= logo_width:
             current_pixel += 1
             if current_pixel == len(number_array[current_number][y]):
                 current_number += 1
                 current_pixel = 0
+    STRIP.show()
+
+
+def wipe(color, brightness=None):
+    if not brightness:
+        brightness = CONFIG["led"]["brightness"]
+    for i in range(WIDTH * HEIGHT):
+        STRIP.setPixelColor(i, color)
+    STRIP.setBrightness(brightness)
     STRIP.show()

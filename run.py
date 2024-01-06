@@ -31,13 +31,30 @@ if __name__ == "__main__":
     config = common.load_config()
     old_subs = 0
     while True:
-        sub_count = youtube.get_sub_count(
-            config["youtube"]["channel_id"],
-            config["youtube"]["api_key"],
-        )
-        if old_subs != sub_count:
-            print(f"New sub count: {sub_count}")
-            old_subs = sub_count
-            num_array = number_array.get_number_array(sub_count, WC, DC, MAX_DIGITS)
-            display.pack_subs(LOGO, num_array)
-        time.sleep(10)
+        try:
+            sub_count = int(
+                youtube.get_sub_count(
+                    config["youtube"]["channel_id"],
+                    config["youtube"]["api_key"],
+                )
+            )
+            if old_subs != sub_count:
+                print(f"New sub count: {sub_count}")
+                if old_subs < sub_count:
+                    wipe_color = WC
+                else:
+                    wipe_color = RC
+                display.wipe(wipe_color)
+                time.sleep(0.4)
+                display.wipe(DC, brightness=0)
+                time.sleep(0.4)
+                display.wipe(wipe_color)
+                time.sleep(0.4)
+                display.wipe(DC, brightness=0)
+                old_subs = sub_count
+                num_array = number_array.get_number_array(sub_count, WC, DC, MAX_DIGITS)
+                display.pack_subs(LOGO, num_array)
+            time.sleep(10)
+        except KeyboardInterrupt:
+            display.wipe(DC, brightness=0)
+            exit(0)

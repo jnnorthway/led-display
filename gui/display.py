@@ -18,16 +18,16 @@ def pack_subs(logo, number_array):
         for j in range(0, HEIGHT, PIXEL_SIZE):
             y = int(j / PIXEL_SIZE)
             if x < logo_width:
-                colour = logo[y][x]
+                color = logo[y][x]
             else:
-                colour = number_array[current_number][y][current_pixel]
+                color = number_array[current_number][y][current_pixel]
             canvas.create_rectangle(
                 i,
                 j,
                 i + PIXEL_SIZE,
                 j + PIXEL_SIZE,
                 outline="black",
-                fill=colour,
+                fill=color,
                 width=2,
             )
         if x >= logo_width:
@@ -35,5 +35,21 @@ def pack_subs(logo, number_array):
             if current_pixel == len(number_array[current_number][y]):
                 current_number += 1
                 current_pixel = 0
+    canvas.pack()
+    window.update()
+
+
+def wipe(color, brightness=None):
+    for i in range(0, WIDTH, PIXEL_SIZE):
+        for j in range(0, HEIGHT, PIXEL_SIZE):
+            canvas.create_rectangle(
+                i,
+                j,
+                i + PIXEL_SIZE,
+                j + PIXEL_SIZE,
+                outline="black",
+                fill=color,
+                width=2,
+            )
     canvas.pack()
     window.update()
