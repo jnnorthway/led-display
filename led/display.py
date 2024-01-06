@@ -34,7 +34,7 @@ def pack_subs(logo, number_array):
             if x < logo_width:
                 colour = COLOR_TRANSLATION[logo[y][x]]
             else:
-                colour = number_array[current_number][y][current_pixel][
+                colour = COLOR_TRANSLATION[
                     number_array[current_number][y][current_pixel]
                 ]
             z = x * HEIGHT + y
@@ -42,7 +42,7 @@ def pack_subs(logo, number_array):
             if col % 2 == 0:
                 px = x * HEIGHT + (z % HEIGHT)
             else:
-                px = x * HEIGHT + HEIGHT - ((z + 1) % HEIGHT)
+                px = x * HEIGHT + HEIGHT - ((z % HEIGHT) + 1)
             STRIP.setPixelColor(px, colour)
         if x >= logo_width:
             current_pixel += 1
