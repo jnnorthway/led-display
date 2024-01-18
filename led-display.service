@@ -6,7 +6,8 @@ After=network-online.target
 [Service]
 Type=simple
 EnvironmentFile={REPLACE_ME}
-ExecStartPre=su vagrant /bin/bash -c "cd $DISPLAY_HOME && ./update.sh"
+ExecStartPre=chown -R ${PRIMARY_USER}:${PRIMARY_USER} $DISPLAY_HOME
+ExecStartPre=su ${PRIMARY_USER} /bin/bash -c "cd $DISPLAY_HOME && ./update.sh"
 ExecStart=/bin/bash -c "cd $DISPLAY_HOME && /usr/bin/python3 -u run.py"
 KillSignal=SIGINT
 Restart=on-failure

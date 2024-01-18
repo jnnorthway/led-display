@@ -7,6 +7,7 @@ fi
 
 REPO_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 echo DISPLAY_HOME=$REPO_DIR > $REPO_DIR/.env
+echo PRIMARY_USER=$(who am i | awk '{print $1}') >> $REPO_DIR/.env
 
 if [ -f /etc/systemd/system/led-display.service ]; then
     systemctl stop led-display.service
