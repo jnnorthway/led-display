@@ -40,7 +40,7 @@ if __name__ == "__main__":
                     api_key,
                 )
             )
-            if old_subs != sub_count:
+            if sub_count and old_subs != sub_count:
                 print(f"New sub count: {sub_count}")
                 if old_subs < sub_count:
                     wipe_color = WC
