@@ -6,6 +6,8 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 REPO_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+source $REPO_DIR/.env
+
 echo DISPLAY_HOME=$REPO_DIR > $REPO_DIR/.env
 echo PRIMARY_USER=$(who am i | awk '{print $1}') >> $REPO_DIR/.env
 
@@ -34,20 +36,34 @@ if [ -f /usr/lib/python3.*/EXTERNALLY-MANAGED ]; then
     done
 fi
 
+question="YouTube channel id? "
+if [[ -n "$CHANNEL_ID" ]]; then
+    question="$question($CHANNEL_ID) "
+fi
 while true; do
-read -p "YouTube channel id? " rsp
-    if [[ -z $rsp ]]; then
+read -p "$question" rsp
+    if [[ -z $rsp ]] && [[ -z "$CHANNEL_ID" ]]; then
         echo invalid response
+    elif [[ -z $rsp ]] && [[ -n "$CHANNEL_ID" ]]; then
+        echo CHANNEL_ID="$CHANNEL_ID" >> $REPO_DIR/.env
+        break
     else
         echo CHANNEL_ID="$rsp" >> $REPO_DIR/.env
         break
     fi
 done
 
+question="YouTube api key? "
+if [[ -n "$API_KEY" ]]; then
+    question="$question($API_KEY) "
+fi
 while true; do
-read -p "YouTube api key? " rsp
-    if [[ -z $rsp ]]; then
+read -p "$question" rsp
+    if [[ -z $rsp ]] && [[ -z "$API_KEY" ]]; then
         echo invalid response
+    elif [[ -z $rsp ]] && [[ -n "$API_KEY" ]]; then
+        echo API_KEY="$API_KEY" >> $REPO_DIR/.env
+        break
     else
         echo API_KEY="$rsp" >> $REPO_DIR/.env
         break
