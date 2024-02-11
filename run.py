@@ -11,7 +11,7 @@ else:
     import gui.display as display
 
 
-MAX_DIGITS = 4
+MAX_DIGITS = 3
 DC = "black"
 RC = "red"
 WC = "white"

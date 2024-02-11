@@ -17,7 +17,9 @@ def get_number_array(number, pc, sc, max_digits):
                 ]
             )
     elif number_str_len > max_digits:
-        if number_str_len == 5:
+        if number_str_len == 4:
+            number_str = f"{number_str[0]}.{number_str[1]}{number_str[2]}k"
+        elif number_str_len == 5:
             number_str = f"{number_str[0]}{number_str[1]}.{number_str[2]}k"
         elif number_str_len == 6:
             number_str = f"{number_str[0]}{number_str[1]}{number_str[2]}k"
