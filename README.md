@@ -4,7 +4,7 @@ This repo is used for displaying a YouTube subscriber counter on an WS2812B led 
 
 ## Installation
 
-For hardware, follow the overview on <a href=CoastTimesDayOff>https://youtu.be/gMdUrHJoeEA</a>
+For hardware, follow the overview on <a href=https://youtu.be/gMdUrHJoeEA>CoastTimesDayOff</a>
 
 For software setup, install an OS such as Rasbian Lite to your Raspberry Pi.
 

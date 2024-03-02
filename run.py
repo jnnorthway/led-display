@@ -34,11 +34,9 @@ if __name__ == "__main__":
     old_subs = 0
     while True:
         try:
-            sub_count = int(
-                youtube.get_sub_count(
-                    channel_id,
-                    api_key,
-                )
+            sub_count = youtube.get_sub_count(
+                channel_id,
+                api_key,
             )
             if sub_count and old_subs != sub_count:
                 print(f"New sub count: {sub_count}")
