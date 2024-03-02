@@ -4,7 +4,7 @@ This repo is used for displaying a YouTube subscriber counter on an WS2812B led 
 
 ## Installation
 
-For hardware, follow the overview on https://www.youtube.com/@CoastTimesDayOff
+For hardware, follow the overview on <a href=CoastTimesDayOff>https://youtu.be/gMdUrHJoeEA</a>
 
 For software setup, install an OS such as Rasbian Lite to your Raspberry Pi.
 
@@ -25,7 +25,7 @@ This will ask a number of question,
 For example, https://www.youtube.com/channel/UCxQf0pX4ocxBEWNVfVqE8FA the channel id is <i>UCxQf0pX4ocxBEWNVfVqE8FA</i>
 
 <b>YouTube api key:</b> Set up a google developer account
-following a tutorial such as <a href=https://blog.hubspot.com/website/how-to-get-youtube-api-key>this one.<a>
+following a tutorial such as <a href=https://blog.hubspot.com/website/how-to-get-youtube-api-key>this one.</a>
 
 Other questions should be self explanitory.
 
