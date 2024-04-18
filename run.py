@@ -54,7 +54,7 @@ if __name__ == "__main__":
                 old_subs = sub_count
                 num_array = number_array.get_number_array(sub_count, WC, DC, MAX_DIGITS)
                 display.pack_subs(LOGO, num_array)
-            time.sleep(10)
+            time.sleep(100)
         except KeyboardInterrupt:
             display.wipe(DC, brightness=0)
             exit(0)
