@@ -10,5 +10,5 @@ def get_sub_count(channel_id, api_key):
         subs = json.loads(data)["items"][0]["statistics"]["subscriberCount"]
         return int(subs)
     except Exception as e:
-        print(f"ERROR: {e}")
+        print(f"ERROR: [get_sub_count] {e}")
         return None
